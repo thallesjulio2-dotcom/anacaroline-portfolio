@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Caroline — Portfólio UGC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+:root {
+  --creme:     #F5EFE6;
+  --creme-mid: #EDE4D5;
+  --marrom:    #7B4A2D;
+  --marrom-dk: #4A2518;
+  --marrom-lt: #A0664A;
+  --marrom-bg: #6B3A2A;
+  --text:      #2A1A10;
+  --muted:     #7A6255;
+  --light:     #B09A8A;
+  --white:     #FDFAF6;
+  --border:    #DDD3C4;
+}
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+body { font-family:'DM Sans',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; }
+
+/* HERO */
+.hero { position:relative; height:100vh; min-height:580px; background:var(--marrom-dk); overflow:hidden; display:flex; align-items:flex-end; }
+.hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; filter:sepia(20%) brightness(0.6); }
+.hero-placeholder { position:absolute; inset:0; background:linear-gradient(160deg,#3a1f10 0%,#1e0e06 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:rgba(255,255,255,0.15); font-size:10px; letter-spacing:3px; text-transform:uppercase; }
+.hero-placeholder svg { opacity:.12; }
+.hero-grad { position:absolute; inset:0; background:linear-gradient(to top,rgba(30,14,6,0.92) 0%,rgba(30,14,6,0.1) 55%,transparent 100%); }
+.hero-badge { position:absolute; top:22px; left:26px; font-size:8px; letter-spacing:3.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); }
+.hero-year { position:absolute; top:22px; right:26px; font-size:8px; letter-spacing:3.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); }
+.hero-content { position:relative; z-index:2; padding:0 28px 52px; width:100%; }
+.hero-tag { display:block; font-size:9px; letter-spacing:4px; text-transform:uppercase; color:rgba(245,239,230,0.6); margin-bottom:10px; }
+.hero-first { display:block; font-family:'DM Sans',sans-serif; font-weight:200; letter-spacing:12px; text-transform:uppercase; color:#fff; line-height:1; font-size:clamp(40px,11vw,88px); }
+.hero-last { display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; color:var(--creme); line-height:.9; font-size:clamp(54px,14vw,110px); }
+.hero-cta { display:inline-flex; align-items:center; gap:8px; margin-top:26px; background:var(--marrom); color:#fff; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; font-weight:500; padding:13px 24px; border-radius:50px; box-shadow:0 4px 20px rgba(75,37,24,0.5); transition:opacity .2s,transform .15s; }
+.hero-cta:active { opacity:.85; transform:scale(.97); }
+.hero-cta svg { width:13px; height:13px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.scroll-wrap { position:absolute; bottom:28px; right:28px; display:flex; flex-direction:column; align-items:center; gap:6px; color:rgba(255,255,255,0.25); font-size:7px; letter-spacing:2px; text-transform:uppercase; z-index:2; }
+.scroll-line { width:1px; height:40px; background:rgba(255,255,255,0.2); transform-origin:top; animation:scrollAnim 2.2s ease-in-out infinite; }
+@keyframes scrollAnim { 0%{transform:scaleY(0);opacity:0} 45%{transform:scaleY(1);opacity:1} 100%{transform:scaleY(1);opacity:0} }
+
+/* NAV */
+nav { background:var(--marrom-bg); position:sticky; top:0; z-index:100; display:flex; justify-content:center; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+nav::-webkit-scrollbar { display:none; }
+nav a { color:rgba(255,255,255,0.82); font-size:9px; letter-spacing:2.5px; text-transform:uppercase; font-weight:500; padding:14px 16px; white-space:nowrap; flex-shrink:0; transition:background .2s; }
+nav a:hover, nav a.active { background:var(--marrom-dk); color:#fff; }
+
+/* SOBRE */
+#sobre { position:relative; overflow:hidden; background:var(--white); }
+.about-watermark { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; white-space:nowrap; color:transparent; -webkit-text-stroke:1.2px rgba(123,74,45,0.1); user-select:none; pointer-events:none; z-index:0; letter-spacing:4px; font-size:clamp(48px,12vw,148px); }
+.about { position:relative; z-index:1; max-width:980px; margin:0 auto; padding:80px 52px; display:grid; grid-template-columns:1fr 220px; gap:64px; align-items:center; }
+.about-tag { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--marrom); font-weight:500; margin-bottom:14px; }
+.about-label { font-size:12px; font-weight:300; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:2px; }
+.about-name { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,6vw,48px); font-style:italic; font-weight:400; color:var(--text); line-height:1.05; margin-bottom:20px; }
+.about-body { font-size:14px; line-height:1.9; color:var(--muted); font-weight:300; }
+.photo-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
+.photo-ring { position:relative; width:clamp(150px,38vw,200px); height:clamp(150px,38vw,200px); animation:floatUp 4s ease-in-out infinite; }
+@keyframes floatUp { 0%,100%{transform:translateY(0) rotate(0deg)} 25%{transform:translateY(-10px) rotate(.5deg)} 50%{transform:translateY(-16px) rotate(0deg)} 75%{transform:translateY(-7px) rotate(-.5deg)} }
+.photo-ring::before { content:''; position:absolute; inset:-8px; border-radius:50%; border:1.5px dashed rgba(123,74,45,0.25); animation:spin 22s linear infinite; }
+@keyframes spin { to{transform:rotate(360deg)} }
+.photo-ring::after { content:''; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); width:70%; height:18px; border-radius:50%; background:radial-gradient(ellipse,rgba(123,74,45,0.2) 0%,transparent 70%); animation:shadowBreath 4s ease-in-out infinite; }
+@keyframes shadowBreath { 0%,100%{transform:translateX(-50%) scaleX(1);opacity:.7} 50%{transform:translateX(-50%) scaleX(.55);opacity:.2} }
+.photo-circle { width:100%; height:100%; border-radius:50%; overflow:hidden; background:var(--creme); display:flex; align-items:center; justify-content:center; border:3px solid rgba(255,255,255,.95); box-shadow:0 10px 36px rgba(123,74,45,.2); }
+.photo-circle img { width:100%; height:100%; object-fit:cover; object-position:top; }
+.photo-ph { display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--marrom-lt); font-size:8px; letter-spacing:1.5px; text-align:center; text-transform:uppercase; padding:16px; opacity:.65; }
+.photo-label { font-family:'Cormorant Garamond',serif; font-size:12px; font-style:italic; color:var(--light); }
+
+hr.div { border:none; border-top:1px solid var(--border); }
+
+/* MÉTRICAS */
+.metrics-sec { background:var(--marrom-dk); padding:56px 28px; }
+.metrics-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
+.metric-card { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.metric-num { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,6vw,48px); font-style:italic; font-weight:300; color:var(--creme); line-height:1; }
+.metric-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(245,239,230,0.5); }
+
+/* NICHOS */
+.nichos-sec { background:var(--marrom-bg); padding:48px 28px; }
+.nichos-inner { max-width:980px; margin:0 auto; }
+.nichos-label { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.4); text-align:center; margin-bottom:24px; }
+.nichos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.nicho-btn { background:rgba(245,239,230,0.1); border:1px solid rgba(245,239,230,0.2); color:rgba(255,255,255,0.88); border-radius:8px; padding:14px 10px; text-align:center; cursor:pointer; font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:background .22s,border-color .22s,transform .15s; user-select:none; }
+.nicho-btn:hover, .nicho-btn.active { background:var(--creme); color:var(--marrom-dk); border-color:var(--creme); transform:translateY(-2px); }
+
+/* SUB-NICHOS */
+.sub-nichos { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:32px; }
+.sub-btn { background:rgba(123,74,45,0.1); border:1px solid var(--border); color:var(--muted); border-radius:50px; padding:7px 16px; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:background .2s,color .2s,border-color .2s; user-select:none; }
+.sub-btn:hover, .sub-btn.active { background:var(--marrom); color:#fff; border-color:var(--marrom); }
+
+/* VÍDEOS */
+.videos-sec { max-width:980px; margin:0 auto; padding:80px 52px; }
+.sec-heading { font-size:10px; letter-spacing:5px; text-transform:uppercase; font-weight:600; text-align:center; color:var(--text); margin-bottom:14px; }
+.sec-heading span { display:inline-block; padding-bottom:8px; border-bottom:1.5px solid var(--marrom); }
+.nicho-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5vw,42px); font-weight:300; color:var(--marrom-dk); text-align:center; margin-bottom:20px; letter-spacing:1px; }
+.videos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.nicho-section { display:none; }
+.nicho-section.visible { display:block; }
+.sub-section { display:none; }
+.sub-section.visible { display:block; }
+
+/* PHONE MOCKUP */
+.phone-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.phone-mock { position:relative; width:100%; background:#111; border-radius:clamp(20px,5vw,32px); border:clamp(6px,1.5vw,10px) solid #111; box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 0 0 1px rgba(255,255,255,0.06); overflow:hidden; aspect-ratio:9/17; }
+.phone-mock::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:36%; height:clamp(14px,3vw,20px); background:#111; border-radius:0 0 14px 14px; z-index:3; }
+.phone-mock::after { content:''; position:absolute; bottom:clamp(4px,1vw,8px); left:50%; transform:translateX(-50%); width:35%; height:3px; background:rgba(255,255,255,0.25); border-radius:4px; z-index:3; }
+.phone-screen { width:100%; height:100%; background:var(--creme-mid); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:14px; }
+.phone-screen iframe { position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:inherit; }
+.phone-play { width:44px; height:44px; border-radius:50%; background:var(--marrom); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(123,74,45,.4); flex-shrink:0; }
+.phone-play::after { content:''; border-left:14px solid #fff; border-top:8px solid transparent; border-bottom:8px solid transparent; margin-left:3px; }
+.phone-tag { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); line-height:1.5; }
+.phone-label { font-size:11px; color:var(--muted); text-align:center; letter-spacing:.5px; line-height:1.4; font-weight:300; }
+.phone-type { font-size:9px; color:var(--light); text-transform:uppercase; letter-spacing:1.5px; }
+
+/* MARCAS */
+.brands-sec { background:var(--creme); padding:64px 28px; }
+.brands-inner { max-width:980px; margin:0 auto; }
+.brands-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--muted); text-align:center; margin-bottom:40px; font-weight:300; }
+.brands-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px 20px; }
+.brand-pill { background:var(--white); border:1px solid var(--border); border-radius:50px; padding:10px 22px; font-size:12px; font-weight:600; color:var(--marrom-dk); letter-spacing:.5px; white-space:nowrap; box-shadow:0 2px 8px rgba(0,0,0,.06); transition:box-shadow .2s,transform .2s; }
+.brand-pill:hover { box-shadow:0 4px 16px rgba(123,74,45,.15); transform:translateY(-2px); }
+
+/* PACOTES */
+.pacotes-sec { background:var(--white); padding:80px 0; }
+.pacotes-inner { max-width:980px; margin:0 auto; padding:0 52px; }
+.pacotes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:52px; }
+.pacote-card { background:var(--creme); border:1px solid var(--border); border-radius:20px; padding:36px 28px; display:flex; flex-direction:column; gap:16px; position:relative; transition:transform .25s,box-shadow .25s; }
+.pacote-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(123,74,45,.12); }
+.pacote-card.destaque { background:var(--marrom-bg); border-color:var(--marrom-bg); }
+.pacote-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--marrom-lt); color:#fff; font-size:8px; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; padding:6px 16px; border-radius:50px; white-space:nowrap; }
+.pacote-nivel { font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:500; }
+.pacote-card.destaque .pacote-nivel { color:rgba(245,239,230,0.5); }
+.pacote-nome { font-family:'Cormorant Garamond',serif; font-size:32px; font-style:italic; font-weight:300; color:var(--text); line-height:1; }
+.pacote-card.destaque .pacote-nome { color:var(--creme); }
+.pacote-div { border:none; border-top:1px solid var(--border); }
+.pacote-card.destaque .pacote-div { border-color:rgba(245,239,230,0.15); }
+.pacote-desc { font-size:13px; color:var(--muted); line-height:1.7; font-weight:300; }
+.pacote-card.destaque .pacote-desc { color:rgba(245,239,230,0.7); }
+.pacote-lista { list-style:none; display:flex; flex-direction:column; gap:10px; flex:1; }
+.pacote-lista li { font-size:13px; color:var(--text); display:flex; align-items:flex-start; gap:10px; font-weight:300; line-height:1.5; }
+.pacote-card.destaque .pacote-lista li { color:rgba(245,239,230,0.88); }
+.pacote-lista li::before { content:'·'; color:var(--marrom-lt); font-size:18px; line-height:1; flex-shrink:0; margin-top:-1px; }
+.pacote-card.destaque .pacote-lista li::before { color:var(--creme-mid); }
+.pacote-btn { display:block; text-align:center; border:1.5px solid var(--marrom); color:var(--marrom); font-size:9px; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; padding:13px 20px; border-radius:8px; transition:background .2s,color .2s; margin-top:auto; }
+.pacote-btn:hover { background:var(--marrom); color:#fff; }
+.pacote-card.destaque .pacote-btn { border-color:var(--creme); color:var(--creme); }
+.pacote-card.destaque .pacote-btn:hover { background:var(--creme); color:var(--marrom-dk); }
+
+/* PROCESSO */
+.process-sec { background:var(--creme); padding:80px 0; }
+.process-inner { max-width:980px; margin:0 auto; padding:0 52px; }
+.process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:52px; }
+.process-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:32px 24px 28px; text-align:center; }
+.process-num { font-family:'Cormorant Garamond',serif; font-size:52px; font-style:italic; font-weight:300; color:var(--marrom-lt); line-height:1; margin-bottom:12px; opacity:.5; }
+.process-name { font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:600; color:var(--marrom-dk); margin-bottom:12px; }
+.process-desc { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
+
+/* DIREITOS */
+.uso-sec { background:var(--marrom-bg); padding:64px 28px; text-align:center; }
+.uso-inner { max-width:720px; margin:0 auto; }
+.uso-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5vw,40px); color:var(--creme); font-weight:300; margin-bottom:16px; }
+.uso-body { font-size:14px; color:rgba(245,239,230,.7); line-height:1.9; font-weight:300; margin-bottom:10px; }
+.uso-pill { display:inline-block; margin-top:16px; background:rgba(245,239,230,0.12); border:1px solid rgba(245,239,230,0.25); color:rgba(245,239,230,0.85); border-radius:50px; padding:10px 24px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500; }
+
+/* FEEDBACKS */
+.fb-sec { max-width:980px; margin:0 auto; padding:80px 52px; }
+.fb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.fb-card { background:var(--creme); border:1px solid var(--border); border-radius:18px; padding:24px 20px 20px; display:flex; flex-direction:column; gap:12px; transition:transform .25s,box-shadow .25s; }
+.fb-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(123,74,45,.1); }
+.fb-stars { display:flex; gap:2px; }
+.star { color:var(--marrom); font-size:13px; }
+.fb-quote { font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--marrom-lt); line-height:.7; font-style:italic; opacity:.5; }
+.fb-text { font-size:13px; line-height:1.8; color:var(--muted); flex:1; font-weight:300; }
+.fb-author { font-size:9px; font-weight:600; color:var(--marrom); border-top:1px solid var(--border); padding-top:12px; text-transform:uppercase; letter-spacing:2px; }
+
+/* EQUIPAMENTOS */
+.equip-sec { background:var(--creme); padding:72px 0; }
+.equip-inner { max-width:980px; margin:0 auto; padding:0 52px; }
+.equip-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--muted); text-align:center; margin-bottom:48px; font-weight:300; }
+.equip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.eq-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:28px 14px 20px; display:flex; flex-direction:column; align-items:center; gap:12px; position:relative; text-align:center; overflow:visible; transition:border-color .25s,box-shadow .25s,transform .25s; }
+.eq-card:hover { border-color:rgba(123,74,45,.3); box-shadow:0 8px 28px rgba(123,74,45,.1); transform:translateY(-4px); }
+.eq-icon { width:88px; height:88px; background:var(--creme); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:transform .3s; }
+.eq-card:hover .eq-icon { transform:scale(1.06) translateY(-3px); }
+.eq-icon svg { width:38px; height:38px; stroke:var(--marrom); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.eq-name { font-size:12px; font-weight:600; color:var(--text); line-height:1.3; }
+.eq-tip { position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px); background:var(--marrom-dk); color:rgba(255,255,255,.9); font-size:11px; line-height:1.6; padding:10px 14px; border-radius:10px; width:max-content; max-width:200px; pointer-events:none; opacity:0; transition:opacity .2s,transform .2s; z-index:20; font-weight:300; }
+.eq-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--marrom-dk); }
+.eq-card:hover .eq-tip { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* CONTATO */
+.cta-sec { background:var(--marrom-dk); padding:80px 28px; }
+.cta-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:64px; align-items:center; }
+.cta-title { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,6vw,52px); font-style:italic; font-weight:300; line-height:1.1; color:var(--creme); margin-bottom:10px; }
+.cta-sub { font-size:13px; color:rgba(245,239,230,.6); font-weight:300; line-height:1.7; }
+.contact-card { background:rgba(245,239,230,.1); border:1px solid rgba(245,239,230,.15); border-radius:22px; padding:30px 28px; display:flex; flex-direction:column; gap:14px; min-width:280px; }
+.c-item { display:flex; align-items:center; gap:10px; color:rgba(245,239,230,.88); font-size:13px; font-weight:300; transition:opacity .2s; }
+.c-item:hover { opacity:.7; }
+.c-item svg { width:15px; height:15px; stroke:rgba(245,239,230,.5); fill:none; stroke-width:2; flex-shrink:0; stroke-linecap:round; stroke-linejoin:round; }
+.c-div { border:none; border-top:1px solid rgba(245,239,230,.12); }
+
+/* FAB */
+.fab { display:none; position:fixed; bottom:22px; right:22px; z-index:200; width:56px; height:56px; border-radius:50%; background:#25D366; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(0,0,0,.25); transition:transform .2s; }
+.fab:active { transform:scale(.93); }
+.fab svg { width:28px; height:28px; fill:#fff; }
+
+footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--light); border-top:1px solid var(--border); background:var(--white); }
+
+/* RESPONSIVO */
+@media (max-width:640px) {
+  .hero-content { padding:0 22px 48px; }
+  .about { grid-template-columns:1fr; padding:60px 22px; gap:0; text-align:center; }
+  .about > div:first-child { order:2; }
+  .photo-wrap { order:1; margin-bottom:40px; }
+  .about-body { margin:0 auto; }
+  .metrics-inner { grid-template-columns:repeat(2,1fr); gap:32px; }
+  .nichos-grid { grid-template-columns:repeat(2,1fr); }
+  .videos-sec { padding:64px 22px; }
+  .videos-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .pacotes-inner { padding:0 22px; }
+  .pacotes-grid { grid-template-columns:1fr; gap:32px; }
+  .process-inner { padding:0 22px; }
+  .process-grid { grid-template-columns:1fr; gap:16px; }
+  .equip-inner { padding:0 22px; }
+  .equip-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .fb-sec { padding:64px 22px; }
+  .fb-grid { grid-template-columns:85vw; grid-auto-flow:column; grid-auto-columns:85vw; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-snap-type:x mandatory; padding-bottom:12px; }
+  .fb-grid::-webkit-scrollbar { display:none; }
+  .fb-card { scroll-snap-align:center; }
+  .cta-inner { grid-template-columns:1fr; gap:36px; }
+  .contact-card { min-width:unset; }
+  .fab { display:flex; }
+  footer { padding-bottom:90px; }
+}
+@media (min-width:641px) and (max-width:900px) {
+  .about { grid-template-columns:1fr 180px; padding:72px 36px; gap:48px; }
+  .metrics-inner { grid-template-columns:repeat(2,1fr); }
+  .nichos-grid { grid-template-columns:repeat(3,1fr); }
+  .videos-sec { padding:72px 36px; }
+  .videos-grid { grid-template-columns:repeat(2,1fr); }
+  .pacotes-inner { padding:0 36px; }
+  .pacotes-grid { grid-template-columns:1fr; gap:24px; }
+  .process-inner { padding:0 36px; }
+  .process-grid { grid-template-columns:1fr; gap:16px; }
+  .equip-inner { padding:0 36px; }
+  .fb-sec { padding:72px 36px; }
+  .fb-grid { grid-template-columns:repeat(2,1fr); }
+  .cta-inner { gap:40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <!-- ★ Foto de capa: descomente e substitua
+  <img class="hero-photo" src="foto-capa.jpg" alt="Ana Caroline"> -->
+  <div class="hero-placeholder">
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Foto de capa — substituir
+  </div>
+  <div class="hero-grad"></div>
+  <span class="hero-badge">Portfólio UGC</span>
+  <span class="hero-year">2026</span>
+  <div class="hero-content">
+    <span class="hero-tag">Criadora de conteúdo</span>
+    <span class="hero-first">Ana</span>
+    <span class="hero-last">Caroline</span>
+    <a class="hero-cta" href="#contato">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Fale comigo
+    </a>
+  </div>
+  <div class="scroll-wrap"><div class="scroll-line"></div><span>scroll</span></div>
+</section>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#sobre">Sobre</a>
+  <a href="#videos">Vídeos</a>
+  <a href="#marcas">Marcas</a>
+  <a href="#pacotes">Pacotes</a>
+  <a href="#processo">Processo</a>
+  <a href="#feedbacks">Feedbacks</a>
+  <a href="#contato">Contato</a>
+</nav>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="about-watermark" aria-hidden="true">Ana Caroline</div>
+  <div class="about">
+    <div>
+      <p class="about-tag">Sobre mim</p>
+      <p class="about-label">Oi, sou</p>
+      <h1 class="about-name">Ana Caroline</h1>
+      <p class="about-body">Ana Caroline Valladares Trindade, 30 anos, Três Rios/RJ. Dentista com olhar clínico e estético para converter. Me identifico com tudo que envolve minimalismo, capturar detalhes — sou habilidosa em fazer filmagens criativas e pensar em cenários diferentes e incríveis. Meu foco é mostrar detalhes que a marca ainda não usou e que gerará atenção a mais para a peça.</p>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo-ring">
+        <div class="photo-circle">
+          <!-- ★ Foto circular: descomente e substitua
+          <img src="foto-perfil.jpg" alt="Ana Caroline"> -->
+          <div class="photo-ph">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Foto de perfil<br>circular aqui</span>
+          </div>
+        </div>
+      </div>
+      <span class="photo-label">Ana Caroline</span>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTRICAS -->
+<!-- ★ Substitua os números pelas métricas reais da Ana Caroline -->
+<div class="metrics-sec">
+  <div class="metrics-inner">
+    <div class="metric-card">
+      <span class="metric-num">00K</span>
+      <span class="metric-label">Seguidores</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">00%</span>
+      <span class="metric-label">Taxa de engajamento</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">00K</span>
+      <span class="metric-label">Visualizações / mês</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">00+</span>
+      <span class="metric-label">Marcas atendidas</span>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- NICHOS + VÍDEOS -->
+<div class="nichos-sec">
+  <div class="nichos-inner">
+    <p class="nichos-label">Escolha um nicho para ver os vídeos</p>
+    <div class="nichos-grid">
+      <div class="nicho-btn active" onclick="showNicho('beleza',this)">Beleza</div>
+      <div class="nicho-btn" onclick="showNicho('moda',this)">Moda feminina</div>
+      <div class="nicho-btn" onclick="showNicho('home',this)">Home e decoração</div>
+    </div>
+  </div>
+</div>
+
+<section id="videos">
+  <div class="videos-sec">
+    <h2 class="sec-heading"><span>Melhores vídeos</span></h2>
+
+    <!-- BELEZA -->
+    <div class="nicho-section visible" id="nicho-beleza">
+      <p class="nicho-title">Beleza</p>
+      <!-- ★ Sub-nichos de Beleza: substitua os nomes abaixo pelos reais -->
+      <div class="sub-nichos">
+        <div class="sub-btn active" onclick="showSub('beleza','b1',this)">Sub-nicho 1</div>
+        <div class="sub-btn" onclick="showSub('beleza','b2',this)">Sub-nicho 2</div>
+        <div class="sub-btn" onclick="showSub('beleza','b3',this)">Sub-nicho 3</div>
+      </div>
+      <div class="sub-section visible" id="beleza-b1">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+        </div>
+      </div>
+      <div class="sub-section" id="beleza-b2">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+        </div>
+      </div>
+      <div class="sub-section" id="beleza-b3">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODA -->
+    <div class="nicho-section" id="nicho-moda">
+      <p class="nicho-title">Moda feminina</p>
+      <!-- ★ Sub-nichos de Moda: substitua os nomes abaixo pelos reais -->
+      <div class="sub-nichos">
+        <div class="sub-btn active" onclick="showSub('moda','m1',this)">Sub-nicho 1</div>
+        <div class="sub-btn" onclick="showSub('moda','m2',this)">Sub-nicho 2</div>
+        <div class="sub-btn" onclick="showSub('moda','m3',this)">Sub-nicho 3</div>
+      </div>
+      <div class="sub-section visible" id="moda-m1">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Trendy</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Dicas</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+        </div>
+      </div>
+      <div class="sub-section" id="moda-m2">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Trendy</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Dicas</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+        </div>
+      </div>
+      <div class="sub-section" id="moda-m3">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Trendy</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Dicas</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <div class="nicho-section" id="nicho-home">
+      <p class="nicho-title">Home e decoração</p>
+      <!-- ★ Sub-nichos de Home: substitua os nomes abaixo pelos reais -->
+      <div class="sub-nichos">
+        <div class="sub-btn active" onclick="showSub('home','h1',this)">Sub-nicho 1</div>
+        <div class="sub-btn" onclick="showSub('home','h2',this)">Sub-nicho 2</div>
+        <div class="sub-btn" onclick="showSub('home','h3',this)">Sub-nicho 3</div>
+      </div>
+      <div class="sub-section visible" id="home-h1">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+        </div>
+      </div>
+      <div class="sub-section" id="home-h2">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+        </div>
+      </div>
+      <div class="sub-section" id="home-h3">
+        <div class="videos-grid">
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
+          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- MARCAS -->
+<section class="brands-sec" id="marcas">
+  <div class="brands-inner">
+    <h2 class="sec-heading"><span>Marcas parceiras</span></h2>
+    <p class="brands-sub">Algumas das marcas que confiaram no meu olhar</p>
+    <div class="brands-grid">
+      <span class="brand-pill">Oral-B</span>
+      <span class="brand-pill">Bionature</span>
+      <span class="brand-pill">Saint Germain</span>
+      <span class="brand-pill">ASK Dermocosméticos</span>
+      <span class="brand-pill">Toda Joana</span>
+      <span class="brand-pill">Domi Dona</span>
+      <span class="brand-pill">Weza</span>
+      <span class="brand-pill">Tuiu</span>
+      <span class="brand-pill">TNC</span>
+      <span class="brand-pill">The Insiders</span>
+      <span class="brand-pill">Cand</span>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PACOTES -->
+<section class="pacotes-sec" id="pacotes">
+  <div class="pacotes-inner">
+    <h2 class="sec-heading"><span>Pacotes</span></h2>
+    <div class="pacotes-grid">
+
+      <!-- ★ Substitua os valores pelos preços e itens reais -->
+      <div class="pacote-card">
+        <p class="pacote-nivel">Essência</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:var(--text);line-height:1;">Início</h3>
+        <hr class="pacote-div">
+        <p class="pacote-desc">Ideal para primeiras parcerias ou teste de conteúdo.</p>
+        <ul class="pacote-lista">
+          <li>1 vídeo UGC</li>
+          <li>3 fotos</li>
+          <li>Roteiro incluso</li>
+          <li>Entrega em até 7 dias</li>
+        </ul>
+        <a class="pacote-btn" href="https://wa.me/5524988219671" target="_blank">Solicitar proposta</a>
+      </div>
+
+      <div class="pacote-card destaque">
+        <div class="pacote-badge">Mais escolhido</div>
+        <p class="pacote-nivel">Presença</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:var(--creme);line-height:1;">Consistência</h3>
+        <hr class="pacote-div">
+        <p class="pacote-desc">Para marcas que querem presença contínua e conteúdo variado.</p>
+        <ul class="pacote-lista">
+          <li>3 vídeos UGC</li>
+          <li>Adaptação para ads</li>
+          <li>Roteiro e narrativa incluso</li>
+          <li>Entrega em até 10 dias</li>
+        </ul>
+        <a class="pacote-btn" href="https://wa.me/5524988219671" target="_blank">Solicitar proposta</a>
+      </div>
+
+      <div class="pacote-card">
+        <p class="pacote-nivel">Experiência</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:var(--text);line-height:1;">Imersão</h3>
+        <hr class="pacote-div">
+        <p class="pacote-desc">Campanha completa para marcas que buscam impacto máximo.</p>
+        <ul class="pacote-lista">
+          <li>5 vídeos UGC</li>
+          <li>5 fotos</li>
+          <li>Adaptação para ads</li>
+          <li>Cobertura de evento ou experiência</li>
+        </ul>
+        <a class="pacote-btn" href="https://wa.me/5524988219671" target="_blank">Solicitar proposta</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PROCESSO -->
+<section class="process-sec" id="processo">
+  <div class="process-inner">
+    <h2 class="sec-heading"><span>Etapas da criação</span></h2>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-num">1</div>
+        <p class="process-name">Processo</p>
+        <p class="process-desc">Compreendo as dores e a necessidade da marca para criar conteúdo que realmente converte.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">2</div>
+        <p class="process-name">Moodboard</p>
+        <p class="process-desc">Desenvolvo um arquivo com ideias e envio referências para alinharmos juntos a cara da campanha.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">3</div>
+        <p class="process-name">Roteiro e entrega</p>
+        <p class="process-desc">Individualizado para cada marca, seguindo o briefing. Entrega em alta qualidade em até 7 dias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIREITOS -->
+<div class="uso-sec">
+  <div class="uso-inner">
+    <h2 class="uso-title">Como usar o conteúdo?</h2>
+    <p class="uso-body">Você tem <strong style="color:var(--creme)">total</strong> liberação para usar meus conteúdos de forma orgânica nas suas redes sociais por <strong style="color:var(--creme)">uso vitalício</strong>.</p>
+    <p class="uso-body">Rodar em tráfego pago (ADS) por no máximo <strong style="color:var(--creme)">4 meses</strong>.</p>
+    <span class="uso-pill">Direitos de uso inclusos</span>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- FEEDBACKS -->
+<section id="feedbacks">
+  <div class="fb-sec">
+    <h2 class="sec-heading"><span>Feedbacks</span></h2>
+    <div class="fb-grid">
+      <div class="fb-card">
+        <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="fb-quote">"</p>
+        <p class="fb-text">Carol gostei muito, viu. Você me surpreendeu, superou minhas expectativas — muito bom. Com certeza faremos outras campanhas.</p>
+        <p class="fb-author">— Criatividade no Básico</p>
+      </div>
+      <div class="fb-card">
+        <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="fb-quote">"</p>
+        <p class="fb-text">Oie Carol! O vídeo que você criou ficou ótimo e está aprovadíssimo! Vou pedir o pagamento e já vemos sobre a melhor data para publicação.</p>
+        <p class="fb-author">— Toda Joana</p>
+      </div>
+      <div class="fb-card">
+        <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="fb-quote">"</p>
+        <p class="fb-text">Super pontual, comunicativa e criativa. Entendeu o briefing à primeira leitura e ainda trouxe ideias que a gente não tinha pensado. Recomendo 100%.</p>
+        <p class="fb-author">— Cliente 03</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- EQUIPAMENTOS -->
+<section class="equip-sec" id="equipamentos">
+  <div class="equip-inner">
+    <h2 class="sec-heading"><span>Meus equipamentos</span></h2>
+    <p class="equip-sub">para garantir conteúdos com iluminação, imagem e vídeo de qualidade</p>
+    <div class="equip-grid">
+      <div class="eq-card">
+        <div class="eq-icon"><svg viewBox="0 0 24 24"><polygon points="3 2 21 2 17 13 7 13"/><line x1="10" y1="13" x2="9" y2="21"/><line x1="14" y1="13" x2="15" y2="21"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div>
+        <span class="eq-name">Softbox</span>
+        <div class="eq-tip">Iluminação difusa profissional — luz suave e uniforme para rosto e close de produto</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="17.5" r="1"/><line x1="9" y1="6" x2="15" y2="6"/></svg></div>
+        <span class="eq-name">iPhone Pro</span>
+        <div class="eq-tip">Câmera cinematográfica de bolso — vídeo em alta resolução para UGC autêntico</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-icon"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div>
+        <span class="eq-name">Microfone lapela</span>
+        <div class="eq-tip">Áudio limpo sem fio — captação profissional em qualquer ambiente</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="10"/><circle cx="12" cy="10" r="2"/><line x1="12" y1="12" x2="5" y2="22"/><line x1="12" y1="12" x2="19" y2="22"/><line x1="7.5" y1="17" x2="16.5" y2="17"/></svg></div>
+        <span class="eq-name">Tripé</span>
+        <div class="eq-tip">Gravações estáveis em qualquer ângulo — do plano vertical ao detalhe de produto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CONTATO -->
+<section class="cta-sec" id="contato">
+  <div class="cta-inner">
+    <div>
+      <p style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,239,230,0.4);margin-bottom:14px">Vamos conversar</p>
+      <h2 class="cta-title">Vamos trabalhar<br>juntos?</h2>
+      <p class="cta-sub">Entre em contato e vamos criar conteúdo que converte.</p>
+    </div>
+    <div class="contact-card">
+      <a class="c-item" href="https://wa.me/5524988219671" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        (24) 9 8821-9671
+      </a>
+      <hr class="c-div">
+      <a class="c-item" href="https://instagram.com/anacarolinevalladares_" target="_blank">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+        @anacarolinevalladares_
+      </a>
+      <a class="c-item" href="https://tiktok.com/@anacarolinevalladares" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        @anacarolinevalladares
+      </a>
+      <hr class="c-div">
+      <a class="c-item" href="mailto:contato@anacarolineugc.online">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        contato@anacarolineugc.online
+      </a>
+      <hr class="c-div">
+      <span class="c-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Três Rios — RJ
+      </span>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Ana Caroline Valladares — UGC Creator · anacarolineugc.online</footer>
+
+<a class="fab" href="https://wa.me/5524988219671" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 2C6.495 2 2 6.494 2 12.05c0 1.873.487 3.63 1.34 5.152L2 22l4.946-1.312A10.01 10.01 0 0 0 12.05 22C17.605 22 22 17.506 22 11.95 22 6.494 17.605 2 12.05 2zm0 18.173a8.148 8.148 0 0 1-4.158-1.14l-.298-.178-3.073.814.826-3.004-.198-.314A8.12 8.12 0 0 1 3.878 12.05c0-4.51 3.664-8.173 8.172-8.173 4.509 0 8.172 3.663 8.172 8.173 0 4.508-3.663 8.123-8.172 8.123z"/></svg>
+</a>
+
+<script>
+function showNicho(id, btn) {
+  document.querySelectorAll('.nicho-section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.nicho-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('nicho-' + id).classList.add('visible');
+  btn.classList.add('active');
+  // ativa primeiro sub-nicho automaticamente
+  const firstSub = document.querySelector('#nicho-' + id + ' .sub-btn');
+  if (firstSub) firstSub.click();
+}
+
+function showSub(nicho, sub, btn) {
+  document.querySelectorAll('#nicho-' + nicho + ' .sub-section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('#nicho-' + nicho + ' .sub-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(nicho + '-' + sub).classList.add('visible');
+  btn.classList.add('active');
+}
+
+// Nav highlight
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('#main-nav a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(a => a.classList.remove('active'));
+      const l = document.querySelector('#main-nav a[href="#'+e.target.id+'"]');
+      if (l) l.classList.add('active');
+    }
+  });
+}, { threshold: 0.25 });
+secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
