@@ -176,11 +176,8 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .sub-section { display:none; }
 .sub-section.visible { display:block; }
 
-/* BLOQUEADOR LOGO STREAMABLE */
-.streamable-block { position:absolute; top:0; left:0; width:80px; height:80px; z-index:10; pointer-events:none; background:transparent; }
-.streamable-block::after { content:''; position:absolute; top:6px; left:6px; width:52px; height:52px; border-radius:12px; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px); }
-.modal-inner .streamable-block { width:100px; height:100px; }
-.modal-inner .streamable-block::after { top:8px; left:8px; width:68px; height:68px; border-radius:14px; }
+/* BLOQUEADOR LOGO STREAMABLE — clip no iframe */
+.modal-inner iframe { clip-path: polygon(58px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 58px); }
 
 /* PHONE MOCKUP */
 .phone-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; }
@@ -950,7 +947,6 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 <!-- MODAL DE VÍDEO -->
 <div class="video-modal" id="video-modal" onclick="if(event.target===this)closeModal()">
   <div class="modal-inner">
-    <div class="streamable-block"></div>
     <button class="modal-close" onclick="closeModal()">✕</button>
     <iframe id="modal-iframe" src="" allowfullscreen allow="autoplay"></iframe>
   </div>
