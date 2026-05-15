@@ -28,10 +28,8 @@ img { display:block; max-width:100%; }
 
 /* HERO */
 .hero { position:relative; height:100vh; min-height:580px; background:var(--marrom-dk); overflow:hidden; display:flex; align-items:flex-end; }
-.hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; filter:sepia(20%) brightness(0.6); }
-.hero-placeholder { position:absolute; inset:0; background:linear-gradient(160deg,#3a1f10 0%,#1e0e06 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:rgba(255,255,255,0.15); font-size:10px; letter-spacing:3px; text-transform:uppercase; }
-.hero-placeholder svg { opacity:.12; }
-.hero-grad { position:absolute; inset:0; background:linear-gradient(to top,rgba(30,14,6,0.92) 0%,rgba(30,14,6,0.1) 55%,transparent 100%); }
+.hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; filter:sepia(10%) brightness(0.75); }
+.hero-grad { position:absolute; inset:0; background:linear-gradient(to top,rgba(30,14,6,0.92) 0%,rgba(30,14,6,0.2) 55%,transparent 100%); }
 .hero-badge { position:absolute; top:22px; left:26px; font-size:8px; letter-spacing:3.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); }
 .hero-year { position:absolute; top:22px; right:26px; font-size:8px; letter-spacing:3.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); }
 .hero-content { position:relative; z-index:2; padding:0 28px 52px; width:100%; }
@@ -68,23 +66,36 @@ nav a:hover, nav a.active { background:var(--marrom-dk); color:#fff; }
 @keyframes shadowBreath { 0%,100%{transform:translateX(-50%) scaleX(1);opacity:.7} 50%{transform:translateX(-50%) scaleX(.55);opacity:.2} }
 .photo-circle { width:100%; height:100%; border-radius:50%; overflow:hidden; background:var(--creme); display:flex; align-items:center; justify-content:center; border:3px solid rgba(255,255,255,.95); box-shadow:0 10px 36px rgba(123,74,45,.2); }
 .photo-circle img { width:100%; height:100%; object-fit:cover; object-position:top; }
-.photo-ph { display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--marrom-lt); font-size:8px; letter-spacing:1.5px; text-align:center; text-transform:uppercase; padding:16px; opacity:.65; }
 .photo-label { font-family:'Cormorant Garamond',serif; font-size:12px; font-style:italic; color:var(--light); }
 
 hr.div { border:none; border-top:1px solid var(--border); }
 
-/* MÉTRICAS */
-.metrics-sec { background:var(--marrom-dk); padding:56px 28px; }
-.metrics-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
-.metric-card { display:flex; flex-direction:column; align-items:center; gap:6px; }
-.metric-num { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,6vw,48px); font-style:italic; font-weight:300; color:var(--creme); line-height:1; }
-.metric-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(245,239,230,0.5); }
+/* MÉTRICAS ANIMADAS */
+.metrics-sec { background:var(--marrom-dk); padding:64px 28px; position:relative; overflow:hidden; }
+.metrics-sec::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%, rgba(160,102,74,0.15) 0%, transparent 70%); pointer-events:none; }
+.metrics-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.metric-card { display:flex; flex-direction:column; align-items:center; gap:10px; padding:32px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:20px; position:relative; overflow:hidden; transition:border-color .3s,background .3s; cursor:default; }
+.metric-card:hover { background:rgba(255,255,255,0.07); border-color:rgba(160,102,74,0.35); }
+.metric-ring { position:relative; width:100px; height:100px; flex-shrink:0; }
+.metric-ring svg { width:100px; height:100px; transform:rotate(-90deg); }
+.metric-ring .track { fill:none; stroke:rgba(255,255,255,0.06); stroke-width:5; }
+.metric-ring .fill { fill:none; stroke:var(--marrom-lt); stroke-width:5; stroke-linecap:round; stroke-dasharray:283; stroke-dashoffset:283; transition:stroke-dashoffset 2s cubic-bezier(.4,0,.2,1); }
+.metric-ring.animated .fill { stroke-dashoffset:var(--dash-offset); }
+.metric-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; }
+.metric-num { font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; font-weight:300; color:var(--creme); line-height:1; }
+.metric-num-small { font-size:16px; }
+.metric-icon { font-size:20px; line-height:1; }
+.metric-label { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(245,239,230,0.45); text-align:center; line-height:1.5; }
+.metric-bar-wrap { width:100%; height:4px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; margin-top:4px; }
+.metric-bar { height:100%; background:linear-gradient(90deg, var(--marrom-lt), var(--marrom)); border-radius:4px; width:0%; transition:width 2s cubic-bezier(.4,0,.2,1); }
+.metric-card.animated .metric-bar { width:var(--bar-width); }
+.metric-sub { font-size:10px; color:rgba(245,239,230,0.3); letter-spacing:1px; }
 
 /* NICHOS */
 .nichos-sec { background:var(--marrom-bg); padding:48px 28px; }
 .nichos-inner { max-width:980px; margin:0 auto; }
 .nichos-label { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.4); text-align:center; margin-bottom:24px; }
-.nichos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.nichos-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
 .nicho-btn { background:rgba(245,239,230,0.1); border:1px solid rgba(245,239,230,0.2); color:rgba(255,255,255,0.88); border-radius:8px; padding:14px 10px; text-align:center; cursor:pointer; font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:background .22s,border-color .22s,transform .15s; user-select:none; }
 .nicho-btn:hover, .nicho-btn.active { background:var(--creme); color:var(--marrom-dk); border-color:var(--creme); transform:translateY(-2px); }
 
@@ -106,14 +117,16 @@ hr.div { border:none; border-top:1px solid var(--border); }
 
 /* PHONE MOCKUP */
 .phone-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; }
-.phone-mock { position:relative; width:100%; background:#111; border-radius:clamp(20px,5vw,32px); border:clamp(6px,1.5vw,10px) solid #111; box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 0 0 1px rgba(255,255,255,0.06); overflow:hidden; aspect-ratio:9/17; }
+.phone-mock { position:relative; width:100%; background:#111; border-radius:clamp(20px,5vw,32px); border:clamp(6px,1.5vw,10px) solid #111; box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 0 0 1px rgba(255,255,255,0.06); overflow:hidden; aspect-ratio:9/17; cursor:pointer; }
 .phone-mock::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:36%; height:clamp(14px,3vw,20px); background:#111; border-radius:0 0 14px 14px; z-index:3; }
 .phone-mock::after { content:''; position:absolute; bottom:clamp(4px,1vw,8px); left:50%; transform:translateX(-50%); width:35%; height:3px; background:rgba(255,255,255,0.25); border-radius:4px; z-index:3; }
-.phone-screen { width:100%; height:100%; background:var(--creme-mid); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:14px; }
-.phone-screen iframe { position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:inherit; }
-.phone-play { width:44px; height:44px; border-radius:50%; background:var(--marrom); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(123,74,45,.4); flex-shrink:0; }
+.phone-screen { width:100%; height:100%; background:var(--creme-mid); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:14px; position:relative; }
+.phone-screen iframe { position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:inherit; pointer-events:none; }
+.phone-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:2; background:rgba(0,0,0,0.0); transition:background .2s; }
+.phone-mock:hover .phone-overlay { background:rgba(0,0,0,0.15); }
+.phone-play { width:44px; height:44px; border-radius:50%; background:var(--marrom); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(123,74,45,.5); flex-shrink:0; transition:transform .2s,opacity .2s; }
 .phone-play::after { content:''; border-left:14px solid #fff; border-top:8px solid transparent; border-bottom:8px solid transparent; margin-left:3px; }
-.phone-tag { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); line-height:1.5; }
+.phone-mock:hover .phone-play { transform:scale(1.1); }
 .phone-label { font-size:11px; color:var(--muted); text-align:center; letter-spacing:.5px; line-height:1.4; font-weight:300; }
 .phone-type { font-size:9px; color:var(--light); text-transform:uppercase; letter-spacing:1.5px; }
 
@@ -137,6 +150,9 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .pacote-card.destaque .pacote-nivel { color:rgba(245,239,230,0.5); }
 .pacote-nome { font-family:'Cormorant Garamond',serif; font-size:32px; font-style:italic; font-weight:300; color:var(--text); line-height:1; }
 .pacote-card.destaque .pacote-nome { color:var(--creme); }
+.pacote-preco { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--marrom); line-height:1; }
+.pacote-card.destaque .pacote-preco { color:var(--creme); }
+.pacote-preco span { font-size:13px; font-family:'DM Sans',sans-serif; font-weight:300; opacity:.6; }
 .pacote-div { border:none; border-top:1px solid var(--border); }
 .pacote-card.destaque .pacote-div { border-color:rgba(245,239,230,0.15); }
 .pacote-desc { font-size:13px; color:var(--muted); line-height:1.7; font-weight:300; }
@@ -218,7 +234,7 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
   .about > div:first-child { order:2; }
   .photo-wrap { order:1; margin-bottom:40px; }
   .about-body { margin:0 auto; }
-  .metrics-inner { grid-template-columns:repeat(2,1fr); gap:32px; }
+  .metrics-inner { grid-template-columns:repeat(2,1fr); gap:20px; }
   .nichos-grid { grid-template-columns:repeat(2,1fr); }
   .videos-sec { padding:64px 22px; }
   .videos-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
@@ -258,12 +274,7 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <!-- ★ Foto de capa: descomente e substitua
-  <img class="hero-photo" src="foto-capa.jpg" alt="Ana Caroline"> -->
-  <div class="hero-placeholder">
-    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    Foto de capa — substituir
-  </div>
+  <img class="hero-photo" src="https://drive.google.com/thumbnail?id=1x3P3zuxt8lpU-Pc041NVU977FLdmjAZX&sz=w1200" alt="Ana Caroline">
   <div class="hero-grad"></div>
   <span class="hero-badge">Portfólio UGC</span>
   <span class="hero-year">2026</span>
@@ -303,12 +314,7 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <div class="photo-wrap">
       <div class="photo-ring">
         <div class="photo-circle">
-          <!-- ★ Foto circular: descomente e substitua
-          <img src="foto-perfil.jpg" alt="Ana Caroline"> -->
-          <div class="photo-ph">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span>Foto de perfil<br>circular aqui</span>
-          </div>
+          <img src="https://drive.google.com/thumbnail?id=1cHKQL7jGFM1asDRwP_4J4botXSWAmE-l&sz=w400" alt="Ana Caroline">
         </div>
       </div>
       <span class="photo-label">Ana Caroline</span>
@@ -316,26 +322,74 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
   </div>
 </section>
 
-<!-- MÉTRICAS -->
-<!-- ★ Substitua os números pelas métricas reais da Ana Caroline -->
-<div class="metrics-sec">
+<!-- MÉTRICAS ANIMADAS -->
+<div class="metrics-sec" id="metrics-section">
   <div class="metrics-inner">
-    <div class="metric-card">
-      <span class="metric-num">00K</span>
-      <span class="metric-label">Seguidores</span>
+
+    <!-- Seguidores -->
+    <div class="metric-card" data-bar="52">
+      <div class="metric-ring">
+        <svg viewBox="0 0 100 100">
+          <circle class="track" cx="50" cy="50" r="45"/>
+          <circle class="fill" cx="50" cy="50" r="45" style="--dash-offset:135"/>
+        </svg>
+        <div class="metric-center">
+          <span class="metric-icon">👥</span>
+          <span class="metric-num" data-target="2631" data-suffix="">2.631</span>
+        </div>
+      </div>
+      <div class="metric-bar-wrap"><div class="metric-bar" style="--bar-width:52%"></div></div>
+      <span class="metric-label">Seguidores<br>Instagram</span>
     </div>
-    <div class="metric-card">
-      <span class="metric-num">00%</span>
-      <span class="metric-label">Taxa de engajamento</span>
+
+    <!-- Visualizações -->
+    <div class="metric-card" data-bar="85">
+      <div class="metric-ring">
+        <svg viewBox="0 0 100 100">
+          <circle class="track" cx="50" cy="50" r="45"/>
+          <circle class="fill" cx="50" cy="50" r="45" style="--dash-offset:42"/>
+        </svg>
+        <div class="metric-center">
+          <span class="metric-icon">👁️</span>
+          <span class="metric-num metric-num-small" data-target="278800" data-suffix="K" data-divisor="1000">278,8K</span>
+        </div>
+      </div>
+      <div class="metric-bar-wrap"><div class="metric-bar" style="--bar-width:85%"></div></div>
+      <span class="metric-label">Visualizações<br>/ mês</span>
     </div>
-    <div class="metric-card">
-      <span class="metric-num">00K</span>
-      <span class="metric-label">Visualizações / mês</span>
+
+    <!-- Público feminino -->
+    <div class="metric-card" data-bar="87">
+      <div class="metric-ring">
+        <svg viewBox="0 0 100 100">
+          <circle class="track" cx="50" cy="50" r="45"/>
+          <circle class="fill" cx="50" cy="50" r="45" style="--dash-offset:37"/>
+        </svg>
+        <div class="metric-center">
+          <span class="metric-icon">♀️</span>
+          <span class="metric-num" data-target="87" data-suffix="%">87%</span>
+        </div>
+      </div>
+      <div class="metric-bar-wrap"><div class="metric-bar" style="--bar-width:87%"></div></div>
+      <span class="metric-label">Público<br>feminino</span>
     </div>
-    <div class="metric-card">
-      <span class="metric-num">00+</span>
-      <span class="metric-label">Marcas atendidas</span>
+
+    <!-- Interações -->
+    <div class="metric-card" data-bar="70">
+      <div class="metric-ring">
+        <svg viewBox="0 0 100 100">
+          <circle class="track" cx="50" cy="50" r="45"/>
+          <circle class="fill" cx="50" cy="50" r="45" style="--dash-offset:85"/>
+        </svg>
+        <div class="metric-center">
+          <span class="metric-icon">💬</span>
+          <span class="metric-num metric-num-small" data-target="9000" data-suffix="K" data-divisor="1000">9,0K</span>
+        </div>
+      </div>
+      <div class="metric-bar-wrap"><div class="metric-bar" style="--bar-width:70%"></div></div>
+      <span class="metric-label">Interações<br>/ mês</span>
     </div>
+
   </div>
 </div>
 
@@ -347,8 +401,10 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <p class="nichos-label">Escolha um nicho para ver os vídeos</p>
     <div class="nichos-grid">
       <div class="nicho-btn active" onclick="showNicho('beleza',this)">Beleza</div>
-      <div class="nicho-btn" onclick="showNicho('moda',this)">Moda feminina</div>
-      <div class="nicho-btn" onclick="showNicho('home',this)">Home e decoração</div>
+      <div class="nicho-btn" onclick="showNicho('moda',this)">Moda</div>
+      <div class="nicho-btn" onclick="showNicho('home',this)">Home</div>
+      <div class="nicho-btn" onclick="showNicho('fitness',this)">Fitness</div>
+      <div class="nicho-btn" onclick="showNicho('ecommerce',this)">E-commerce</div>
     </div>
   </div>
 </div>
@@ -360,34 +416,134 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <!-- BELEZA -->
     <div class="nicho-section visible" id="nicho-beleza">
       <p class="nicho-title">Beleza</p>
-      <!-- ★ Sub-nichos de Beleza: substitua os nomes abaixo pelos reais -->
       <div class="sub-nichos">
-        <div class="sub-btn active" onclick="showSub('beleza','b1',this)">Sub-nicho 1</div>
-        <div class="sub-btn" onclick="showSub('beleza','b2',this)">Sub-nicho 2</div>
-        <div class="sub-btn" onclick="showSub('beleza','b3',this)">Sub-nicho 3</div>
+        <div class="sub-btn active" onclick="showSub('beleza','b1',this)">Beleza 1</div>
+        <div class="sub-btn" onclick="showSub('beleza','b2',this)">Beleza 2</div>
+        <div class="sub-btn" onclick="showSub('beleza','b3',this)">Beleza 3</div>
       </div>
+
       <div class="sub-section visible" id="beleza-b1">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1PBgQLFYvyjHQ_lsrLloJNqF1DqJeHATE')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1PBgQLFYvyjHQ_lsrLloJNqF1DqJeHATE&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 1 · Vídeo 1</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1ZhtKg7ml3fFXCO5M5lbpgSnPjD9tN2WS')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1ZhtKg7ml3fFXCO5M5lbpgSnPjD9tN2WS&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 1 · Vídeo 2</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1y00PRRu-JFulvqIKuSLsXCgox8MuvcXY')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1y00PRRu-JFulvqIKuSLsXCgox8MuvcXY&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 1 · Vídeo 3</span>
+            <span class="phone-type">UGC</span>
+          </div>
         </div>
       </div>
+
       <div class="sub-section" id="beleza-b2">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1vSOpYCkl-rC6HnONZp67yZwVA66EM0_h')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1vSOpYCkl-rC6HnONZp67yZwVA66EM0_h&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 2 · Vídeo 1</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1qgNwSPVyb4ODcTA-NUfeoeKjp6Zwz9uy')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1qgNwSPVyb4ODcTA-NUfeoeKjp6Zwz9uy&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 2 · Vídeo 2</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1Ixs3cjoKX1O03kHTMI3Xd1Co09ERfPOl')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1Ixs3cjoKX1O03kHTMI3Xd1Co09ERfPOl&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 2 · Vídeo 3</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1rxUrgM62n2ubdsLZ0jDAR-w_MM8oyvEu')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1rxUrgM62n2ubdsLZ0jDAR-w_MM8oyvEu&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 2 · Vídeo 4</span>
+            <span class="phone-type">UGC</span>
+          </div>
         </div>
       </div>
+
       <div class="sub-section" id="beleza-b3">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1kLUTRbUCyhq6xEFPHDazQPNcTUwPUWJZ')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1kLUTRbUCyhq6xEFPHDazQPNcTUwPUWJZ&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 3 · Vídeo 1</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1aLRBOUEtfn3LBe1Xtr3skkJIevu5JDFc')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1aLRBOUEtfn3LBe1Xtr3skkJIevu5JDFc&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 3 · Vídeo 2</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1sUJNas6wOQCHNZNMrp5MD0GvG5c16M8H')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1sUJNas6wOQCHNZNMrp5MD0GvG5c16M8H&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 3 · Vídeo 3</span>
+            <span class="phone-type">UGC</span>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone-mock" onclick="openDrive('1YdFtjvt2AhT7pacVgT2Z8BDmz8h29h35')">
+              <div class="phone-screen">
+                <img src="https://drive.google.com/thumbnail?id=1YdFtjvt2AhT7pacVgT2Z8BDmz8h29h35&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+                <div class="phone-overlay"><div class="phone-play"></div></div>
+              </div>
+            </div>
+            <span class="phone-label">Beleza 3 · Vídeo 4</span>
+            <span class="phone-type">UGC</span>
+          </div>
         </div>
       </div>
     </div>
@@ -395,69 +551,84 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <!-- MODA -->
     <div class="nicho-section" id="nicho-moda">
       <p class="nicho-title">Moda feminina</p>
-      <!-- ★ Sub-nichos de Moda: substitua os nomes abaixo pelos reais -->
       <div class="sub-nichos">
-        <div class="sub-btn active" onclick="showSub('moda','m1',this)">Sub-nicho 1</div>
-        <div class="sub-btn" onclick="showSub('moda','m2',this)">Sub-nicho 2</div>
-        <div class="sub-btn" onclick="showSub('moda','m3',this)">Sub-nicho 3</div>
+        <div class="sub-btn active" onclick="showSub('moda','m1',this)">Moda 1</div>
+        <div class="sub-btn" onclick="showSub('moda','m2',this)">Moda 2</div>
+        <div class="sub-btn" onclick="showSub('moda','m3',this)">Moda 3</div>
       </div>
+
       <div class="sub-section visible" id="moda-m1">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Trendy</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Dicas</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1Tkjl0mzHkgRWZkXSYQJwMYJaL-cIrifS')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1Tkjl0mzHkgRWZkXSYQJwMYJaL-cIrifS&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 1 · Vídeo 1</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1kX2ULmrPNzOj0PlLO3TlreavVr6O0-iJ')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1kX2ULmrPNzOj0PlLO3TlreavVr6O0-iJ&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 1 · Vídeo 2</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1xHAkfjiMdTN5Y8RF-oDPBRNvq_JF5Dwc')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1xHAkfjiMdTN5Y8RF-oDPBRNvq_JF5Dwc&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 1 · Vídeo 3</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1qClMxIdNY1OHetVHzp-cA5oFjSxYl1P1')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1qClMxIdNY1OHetVHzp-cA5oFjSxYl1P1&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 1 · Vídeo 4</span><span class="phone-type">UGC</span></div>
         </div>
       </div>
+
       <div class="sub-section" id="moda-m2">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Trendy</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Dicas</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1SdikdEiDYMX0q0oxV-7oC8bQeCXjLC0V')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1SdikdEiDYMX0q0oxV-7oC8bQeCXjLC0V&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 2 · Vídeo 1</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('15Nkdw8tM1JIOKcuoYmyQFm2i2PFodKiW')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=15Nkdw8tM1JIOKcuoYmyQFm2i2PFodKiW&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 2 · Vídeo 2</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1-CVntu4f-UO7-MJKQ1_daCdhgyIuAUQT')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1-CVntu4f-UO7-MJKQ1_daCdhgyIuAUQT&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 2 · Vídeo 3</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('13tU4stcbNQu6I8RCPADimHSvWng283uA')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=13tU4stcbNQu6I8RCPADimHSvWng283uA&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 2 · Vídeo 4</span><span class="phone-type">UGC</span></div>
         </div>
       </div>
+
       <div class="sub-section" id="moda-m3">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Trendy</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Dicas</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1nRWs-yiafcg15HJvmpr50LS7PDLfuUTH')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1nRWs-yiafcg15HJvmpr50LS7PDLfuUTH&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 3 · Vídeo 1</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('12IUVFvW8mTHyrkOXryh12MRT_bMEFTMJ')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=12IUVFvW8mTHyrkOXryh12MRT_bMEFTMJ&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 3 · Vídeo 2</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1NmtVRH35cEcBVLA7ziSn8IHEXu-QpJR6')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1NmtVRH35cEcBVLA7ziSn8IHEXu-QpJR6&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 3 · Vídeo 3</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1h6zq96Ni2rwGXYv9PT4U6pT-qYUq4JP7')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1h6zq96Ni2rwGXYv9PT4U6pT-qYUq4JP7&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Moda 3 · Vídeo 4</span><span class="phone-type">UGC</span></div>
         </div>
       </div>
     </div>
 
-    <!-- HOME -->
+    <!-- HOME E DECORAÇÃO -->
     <div class="nicho-section" id="nicho-home">
-      <p class="nicho-title">Home e decoração</p>
-      <!-- ★ Sub-nichos de Home: substitua os nomes abaixo pelos reais -->
+      <p class="nicho-title">Home e Decoração</p>
       <div class="sub-nichos">
-        <div class="sub-btn active" onclick="showSub('home','h1',this)">Sub-nicho 1</div>
-        <div class="sub-btn" onclick="showSub('home','h2',this)">Sub-nicho 2</div>
-        <div class="sub-btn" onclick="showSub('home','h3',this)">Sub-nicho 3</div>
+        <div class="sub-btn active" onclick="showSub('home','h1',this)">Todos os vídeos</div>
       </div>
       <div class="sub-section visible" id="home-h1">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1SfTJOi1Rxsn1BGeapepS_dPaACTJvrkW')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1SfTJOi1Rxsn1BGeapepS_dPaACTJvrkW&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Home · Vídeo 1</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('18-ObqYnzSBKfu5yRhn3Ipi8i5EbjOP5E')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=18-ObqYnzSBKfu5yRhn3Ipi8i5EbjOP5E&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Home · Vídeo 2</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1J91WGiiUAer4T62cb0507nsOWDssYjFI')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1J91WGiiUAer4T62cb0507nsOWDssYjFI&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Home · Vídeo 3</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1Ez7y6Vp4XClMxR7qHnGl3ytc9VpdQqZ_')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1Ez7y6Vp4XClMxR7qHnGl3ytc9VpdQqZ_&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Home · Vídeo 4</span><span class="phone-type">UGC</span></div>
         </div>
       </div>
-      <div class="sub-section" id="home-h2">
+    </div>
+
+    <!-- FITNESS E BEM ESTAR -->
+    <div class="nicho-section" id="nicho-fitness">
+      <p class="nicho-title">Fitness e Bem Estar</p>
+      <div class="sub-nichos">
+        <div class="sub-btn active" onclick="showSub('fitness','f1',this)">Todos os vídeos</div>
+      </div>
+      <div class="sub-section visible" id="fitness-f1">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1A4Ow9nKQcjPV4Ok_9_b3LigaNXLdDVlp')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1A4Ow9nKQcjPV4Ok_9_b3LigaNXLdDVlp&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Fitness · Vídeo 1</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1LruvgV8jbTDCtWs2ceYkxxTJnmPSUzlQ')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1LruvgV8jbTDCtWs2ceYkxxTJnmPSUzlQ&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Fitness · Vídeo 2</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1hLhT1-JeXgWaqrN5-iFbUa0Xl07kQsoW')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1hLhT1-JeXgWaqrN5-iFbUa0Xl07kQsoW&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Fitness · Vídeo 3</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1pdJLTDez3XOE_5DYjTQJAmgnHGkLnR7H')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1pdJLTDez3XOE_5DYjTQJAmgnHGkLnR7H&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">Fitness · Vídeo 4</span><span class="phone-type">UGC</span></div>
         </div>
       </div>
-      <div class="sub-section" id="home-h3">
+    </div>
+
+    <!-- E-COMMERCE -->
+    <div class="nicho-section" id="nicho-ecommerce">
+      <p class="nicho-title">E-commerce</p>
+      <div class="sub-nichos">
+        <div class="sub-btn active" onclick="showSub('ecommerce','e1',this)">Todos os vídeos</div>
+      </div>
+      <div class="sub-section visible" id="ecommerce-e1">
         <div class="videos-grid">
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Review</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Demonstrativo</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Tutorial</span></div>
-          <div class="phone-wrap"><div class="phone-mock"><div class="phone-screen"><div class="phone-play"></div><span class="phone-tag">aguardando link</span></div></div><span class="phone-label">Título do vídeo</span><span class="phone-type">Unboxing</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1BahXv8kze7KGoncSjYUYPF5IaznShymq')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1BahXv8kze7KGoncSjYUYPF5IaznShymq&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">E-commerce · Vídeo 1</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1bzBY5QtjiIig1G6g03Iiji9ac0oPzHPe')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1bzBY5QtjiIig1G6g03Iiji9ac0oPzHPe&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">E-commerce · Vídeo 2</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('1PdVJLpI-a2PVnKAheNRw4qtI-j2ecVkh')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=1PdVJLpI-a2PVnKAheNRw4qtI-j2ecVkh&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">E-commerce · Vídeo 3</span><span class="phone-type">UGC</span></div>
+          <div class="phone-wrap"><div class="phone-mock" onclick="openDrive('101SyiXNALtvncJo0HBsgPy7kD_MZLLXj')"><div class="phone-screen"><img src="https://drive.google.com/thumbnail?id=101SyiXNALtvncJo0HBsgPy7kD_MZLLXj&sz=w300" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="phone-overlay"><div class="phone-play"></div></div></div></div><span class="phone-label">E-commerce · Vídeo 4</span><span class="phone-type">UGC</span></div>
         </div>
       </div>
     </div>
@@ -496,10 +667,10 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <h2 class="sec-heading"><span>Pacotes</span></h2>
     <div class="pacotes-grid">
 
-      <!-- ★ Substitua os valores pelos preços e itens reais -->
       <div class="pacote-card">
         <p class="pacote-nivel">Essência</p>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:var(--text);line-height:1;">Início</h3>
+        <h3 class="pacote-nome">Início</h3>
+        <p class="pacote-preco">R$ 280<span>,00</span></p>
         <hr class="pacote-div">
         <p class="pacote-desc">Ideal para primeiras parcerias ou teste de conteúdo.</p>
         <ul class="pacote-lista">
@@ -514,7 +685,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
       <div class="pacote-card destaque">
         <div class="pacote-badge">Mais escolhido</div>
         <p class="pacote-nivel">Presença</p>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:var(--creme);line-height:1;">Consistência</h3>
+        <h3 class="pacote-nome">Consistência</h3>
+        <p class="pacote-preco">R$ 380<span>,00</span></p>
         <hr class="pacote-div">
         <p class="pacote-desc">Para marcas que querem presença contínua e conteúdo variado.</p>
         <ul class="pacote-lista">
@@ -528,7 +700,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
       <div class="pacote-card">
         <p class="pacote-nivel">Experiência</p>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:var(--text);line-height:1;">Imersão</h3>
+        <h3 class="pacote-nome">Imersão</h3>
+        <p class="pacote-preco">R$ 780<span>,00</span></p>
         <hr class="pacote-div">
         <p class="pacote-desc">Campanha completa para marcas que buscam impacto máximo.</p>
         <ul class="pacote-lista">
@@ -553,7 +726,7 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <div class="process-grid">
       <div class="process-card">
         <div class="process-num">1</div>
-        <p class="process-name">Processo</p>
+        <p class="process-name">Briefing</p>
         <p class="process-desc">Compreendo as dores e a necessidade da marca para criar conteúdo que realmente converte.</p>
       </div>
       <div class="process-card">
@@ -686,12 +859,17 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 </a>
 
 <script>
+// Abre vídeo no Drive
+function openDrive(id) {
+  window.open('https://drive.google.com/file/d/' + id + '/view', '_blank');
+}
+
+// Navegação de nichos
 function showNicho(id, btn) {
   document.querySelectorAll('.nicho-section').forEach(s => s.classList.remove('visible'));
   document.querySelectorAll('.nicho-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('nicho-' + id).classList.add('visible');
   btn.classList.add('active');
-  // ativa primeiro sub-nicho automaticamente
   const firstSub = document.querySelector('#nicho-' + id + ' .sub-btn');
   if (firstSub) firstSub.click();
 }
@@ -702,6 +880,52 @@ function showSub(nicho, sub, btn) {
   document.getElementById(nicho + '-' + sub).classList.add('visible');
   btn.classList.add('active');
 }
+
+// MÉTRICAS ANIMADAS — contador + anel + barra
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const divisor = parseInt(el.dataset.divisor) || 1;
+  const duration = 2000;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(target * ease);
+
+    if (divisor > 1) {
+      const val = (current / divisor).toFixed(1);
+      el.textContent = val.replace('.', ',') + suffix;
+    } else if (target >= 1000) {
+      el.textContent = current.toLocaleString('pt-BR') + suffix;
+    } else {
+      el.textContent = current + suffix;
+    }
+
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Intersection Observer para métricas
+const metricsObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.metric-ring').forEach(ring => ring.classList.add('animated'));
+      entry.target.querySelectorAll('.metric-card').forEach(card => {
+        card.classList.add('animated');
+        const counter = card.querySelector('.metric-num[data-target]');
+        if (counter) animateCounter(counter);
+      });
+      metricsObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const metricsSection = document.getElementById('metrics-section');
+if (metricsSection) metricsObs.observe(metricsSection);
 
 // Nav highlight
 const secs = document.querySelectorAll('section[id]');
