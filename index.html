@@ -176,10 +176,6 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .sub-section { display:none; }
 .sub-section.visible { display:block; }
 
-/* BLOQUEADOR LOGO STREAMABLE */
-.streamable-block { position:absolute; top:8px; left:8px; width:44px; height:44px; border-radius:50%; background:#000; z-index:10; pointer-events:none; }
-.modal-inner .streamable-block { top:10px; left:10px; width:52px; height:52px; }
-
 /* PHONE MOCKUP */
 .phone-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; }
 .phone-mock { position:relative; width:100%; background:#111; border-radius:clamp(20px,5vw,32px); border:clamp(6px,1.5vw,10px) solid #111; box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 0 0 1px rgba(255,255,255,0.06); overflow:hidden; aspect-ratio:9/17; cursor:pointer; }
@@ -948,7 +944,6 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 <!-- MODAL DE VÍDEO -->
 <div class="video-modal" id="video-modal" onclick="if(event.target===this)closeModal()">
   <div class="modal-inner">
-    <div class="streamable-block"></div>
     <button class="modal-close" onclick="closeModal()">✕</button>
     <iframe id="modal-iframe" src="" allowfullscreen allow="autoplay"></iframe>
   </div>
@@ -1009,7 +1004,7 @@ function openDrive(id) { openVideo('drive', id); }
 function openStreamable(id) {
   const modal = document.getElementById('video-modal');
   const iframe = document.getElementById('modal-iframe');
-  iframe.src = 'https://streamable.com/e/' + id + '?autoplay=1';
+  iframe.src = 'https://streamable.com/e/' + id + '?autoplay=1&nocontrols=1&quality=720';
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
