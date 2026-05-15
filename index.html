@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -55,7 +55,7 @@ nav a:hover, nav a.active { background:var(--marrom-dk); color:#fff; }
 .about { position:relative; z-index:1; max-width:980px; margin:0 auto; padding:80px 52px; display:grid; grid-template-columns:1fr 220px; gap:64px; align-items:center; }
 .about-tag { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--marrom); font-weight:500; margin-bottom:14px; }
 .about-label { font-size:12px; font-weight:300; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:2px; }
-.about-name { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,6vw,48px); font-style:italic; font-weight:400; color:var(--text); line-height:1.05; margin-bottom:20px; }
+.about-name { font-family:'Cormorant Garamond',serif; font-size:clamp(38px,7vw,58px); font-style:italic; font-weight:400; color:var(--text); line-height:1.05; margin-bottom:20px; }
 .about-body { font-size:14px; line-height:1.9; color:var(--muted); font-weight:300; }
 .photo-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
 .photo-ring { position:relative; width:clamp(150px,38vw,200px); height:clamp(150px,38vw,200px); animation:floatUp 4s ease-in-out infinite; }
@@ -69,6 +69,19 @@ nav a:hover, nav a.active { background:var(--marrom-dk); color:#fff; }
 .photo-label { font-family:'Cormorant Garamond',serif; font-size:12px; font-style:italic; color:var(--light); }
 
 hr.div { border:none; border-top:1px solid var(--border); }
+
+/* INSTAGRAM HEADER */
+.ig-header { max-width:980px; margin:0 auto 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding:0 4px; }
+.ig-badge { display:flex; align-items:center; gap:12px; }
+.ig-icon { width:48px; height:48px; border-radius:14px; flex-shrink:0; filter:drop-shadow(0 4px 12px rgba(193,53,132,0.4)); }
+.ig-text-wrap { display:flex; flex-direction:column; gap:2px; }
+.ig-label { font-size:16px; font-weight:600; color:#fff; letter-spacing:.5px; line-height:1; }
+.ig-sublabel { font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:.5px; }
+.ig-title-wrap { text-align:right; }
+.ig-title { font-family:'DM Sans',sans-serif; font-size:clamp(22px,3vw,32px); font-weight:300; color:rgba(255,255,255,0.9); line-height:1; letter-spacing:-.5px; }
+.ig-title-grad { font-weight:600; background:linear-gradient(90deg,#FCAF45,#F77737,#C13584,#833AB4); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.ig-period { font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
+@media(max-width:640px){ .ig-header{ flex-direction:column; align-items:flex-start; } .ig-title-wrap{ text-align:left; } }
 
 /* MÉTRICAS ANIMADAS */
 .metrics-sec { background:var(--marrom-dk); padding:64px 28px; position:relative; overflow:hidden; }
@@ -92,22 +105,48 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .metric-sub { font-size:10px; color:rgba(245,239,230,0.3); letter-spacing:1px; }
 
 /* NICHOS */
-.nichos-sec { background:var(--marrom-bg); padding:48px 28px; }
+.nichos-sec { background:var(--marrom-bg); padding:48px 28px; transition:background 0.5s ease; }
 .nichos-inner { max-width:980px; margin:0 auto; }
 .nichos-label { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.4); text-align:center; margin-bottom:24px; }
 .nichos-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
-.nicho-btn { background:rgba(245,239,230,0.1); border:1px solid rgba(245,239,230,0.2); color:rgba(255,255,255,0.88); border-radius:8px; padding:14px 10px; text-align:center; cursor:pointer; font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:background .22s,border-color .22s,transform .15s; user-select:none; }
-.nicho-btn:hover, .nicho-btn.active { background:var(--creme); color:var(--marrom-dk); border-color:var(--creme); transform:translateY(-2px); }
+.nicho-btn { border:1px solid rgba(245,239,230,0.2); color:rgba(255,255,255,0.88); border-radius:8px; padding:14px 10px; text-align:center; cursor:pointer; font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:background .25s,border-color .25s,color .25s,transform .15s; user-select:none; background:rgba(245,239,230,0.08); }
+.nicho-btn:hover { transform:translateY(-2px); opacity:.9; }
 
-/* SUB-NICHOS */
-.sub-nichos { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:32px; }
+/* Cores individuais por nicho */
+.nicho-btn[onclick*="beleza"]        { --nicho-color:#D4A89A; --nicho-dark:#7B4A2D; }
+.nicho-btn[onclick*="moda"]          { --nicho-color:#C4A882; --nicho-dark:#6B4A2A; }
+.nicho-btn[onclick*="home"]          { --nicho-color:#A8B89A; --nicho-dark:#4A6040; }
+.nicho-btn[onclick*="fitness"]       { --nicho-color:#A8C4C4; --nicho-dark:#3A6060; }
+.nicho-btn[onclick*="ecommerce"]     { --nicho-color:#C4A8C4; --nicho-dark:#604060; }
+
+.nicho-btn.active {
+  background:var(--nicho-color);
+  border-color:var(--nicho-color);
+  color:var(--nicho-dark);
+  font-weight:700;
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Título do nicho colorido também */
+.nicho-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(36px,6vw,56px); font-weight:300; text-align:center; margin-bottom:24px; letter-spacing:1px; transition:color .3s; }
+.nicho-title.beleza   { color:#A0504A; }
+.nicho-title.moda     { color:#8A6030; }
+.nicho-title.home     { color:#4A7040; }
+.nicho-title.fitness  { color:#3A7070; }
+.nicho-title.ecommerce{ color:#704070; }
+
+/* Sub-botões coloridos por nicho */
 .sub-btn { background:rgba(123,74,45,0.1); border:1px solid var(--border); color:var(--muted); border-radius:50px; padding:7px 16px; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:background .2s,color .2s,border-color .2s; user-select:none; }
-.sub-btn:hover, .sub-btn.active { background:var(--marrom); color:#fff; border-color:var(--marrom); }
-
-/* VÍDEOS */
+.nicho-beleza   .sub-btn.active { background:#D4A89A; border-color:#D4A89A; color:#5A2A20; }
+.nicho-moda     .sub-btn.active { background:#C4A882; border-color:#C4A882; color:#5A3A10; }
+.nicho-home     .sub-btn.active { background:#A8B89A; border-color:#A8B89A; color:#2A4020; }
+.nicho-fitness  .sub-btn.active { background:#A8C4C4; border-color:#A8C4C4; color:#1A4040; }
+.nicho-ecommerce .sub-btn.active { background:#C4A8C4; border-color:#C4A8C4; color:#401040; }
+.sub-btn:not(.active):hover { background:var(--creme-mid); }
 .videos-sec { max-width:980px; margin:0 auto; padding:80px 52px; }
-.sec-heading { font-size:10px; letter-spacing:5px; text-transform:uppercase; font-weight:600; text-align:center; color:var(--text); margin-bottom:14px; }
-.sec-heading span { display:inline-block; padding-bottom:8px; border-bottom:1.5px solid var(--marrom); }
+.sec-heading { font-size:11px; letter-spacing:6px; text-transform:uppercase; font-weight:700; text-align:center; color:var(--text); margin-bottom:18px; }
+.sec-heading span { display:inline-block; padding-bottom:10px; border-bottom:2px solid var(--marrom); }
 .nicho-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5vw,42px); font-weight:300; color:var(--marrom-dk); text-align:center; margin-bottom:20px; letter-spacing:1px; }
 .videos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .nicho-section { display:none; }
@@ -131,25 +170,27 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .phone-type { font-size:9px; color:var(--light); text-transform:uppercase; letter-spacing:1.5px; }
 
 /* MODAL DE VÍDEO */
-.video-modal { display:none; position:fixed; inset:0; z-index:999; align-items:center; justify-content:center; background:rgba(10,5,2,0.92); backdrop-filter:blur(8px); }
+.video-modal { display:none; position:fixed; inset:0; z-index:999; align-items:center; justify-content:center; background:rgba(10,5,2,0.95); backdrop-filter:blur(8px); }
 .video-modal.open { display:flex; }
-.modal-inner { position:relative; width:min(380px, 90vw); aspect-ratio:9/16; border-radius:28px; overflow:hidden; background:#000; box-shadow:0 24px 80px rgba(0,0,0,0.7); animation:modalIn .3s cubic-bezier(.4,0,.2,1); }
+.modal-inner { position:relative; width:min(360px, 88vw); aspect-ratio:9/16; border-radius:24px; overflow:hidden; background:#000; box-shadow:0 24px 80px rgba(0,0,0,0.8); animation:modalIn .3s cubic-bezier(.4,0,.2,1); }
 @keyframes modalIn { from{transform:scale(.85);opacity:0} to{transform:scale(1);opacity:1} }
-.modal-inner iframe { width:100%; height:100%; border:none; }
-.modal-close { position:absolute; top:14px; right:14px; z-index:10; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); color:#fff; font-size:18px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; backdrop-filter:blur(4px); }
-.modal-close:hover { background:rgba(255,255,255,0.25); }
+.modal-inner iframe { position:absolute; top:-40px; left:0; width:100%; height:calc(100% + 80px); border:none; pointer-events:auto; }
+.modal-close { position:fixed; top:20px; right:20px; z-index:1000; width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.2); border:1.5px solid rgba(255,255,255,0.4); color:#fff; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; backdrop-filter:blur(6px); }
+.modal-close:hover { background:rgba(255,255,255,0.35); }
 
 /* MARCAS */
 .brands-sec { background:var(--creme); padding:64px 28px; }
 .brands-inner { max-width:980px; margin:0 auto; }
 .brands-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--muted); text-align:center; margin-bottom:40px; font-weight:300; }
-.brands-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:860px; margin:0 auto; }
-.brand-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:20px 24px; display:flex; align-items:center; justify-content:center; height:90px; box-shadow:0 2px 8px rgba(0,0,0,.05); transition:box-shadow .2s,transform .2s; overflow:hidden; }
-.brand-card:hover { box-shadow:0 6px 20px rgba(123,74,45,.12); transform:translateY(-3px); }
-.brand-card img { max-width:100%; max-height:52px; width:auto; height:auto; object-fit:contain; filter:grayscale(100%); opacity:0.75; transition:filter .3s,opacity .3s; }
+.brands-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px 16px; }
+.brand-card { background:var(--white); border:1px solid var(--border); border-radius:50px; padding:14px 28px; display:flex; align-items:center; justify-content:center; height:64px; box-shadow:0 2px 8px rgba(0,0,0,.05); transition:box-shadow .3s,transform .3s; overflow:hidden; }
+.brand-card:nth-child(3n+1) { padding:12px 24px; height:58px; }
+.brand-card:nth-child(3n+2) { padding:16px 32px; height:70px; }
+.brand-card:hover { box-shadow:0 6px 20px rgba(123,74,45,.12); transform:translateY(-2px); }
+.brand-card img { max-width:110px; max-height:38px; width:auto; height:auto; object-fit:contain; filter:grayscale(100%); opacity:0.6; transition:filter 0.8s ease, opacity 0.8s ease; }
+.brand-card.colorido img { filter:grayscale(0%); opacity:1; }
 .brand-card:hover img { filter:grayscale(0%); opacity:1; }
-@media(max-width:640px){ .brands-grid{ grid-template-columns:repeat(2,1fr); gap:12px; } }
-@media(min-width:641px) and (max-width:900px){ .brands-grid{ grid-template-columns:repeat(3,1fr); } }
+@media(max-width:640px){ .brand-card img { max-width:80px; max-height:28px; } .brand-card { padding:10px 18px; height:52px; } }
 
 /* PACOTES */
 .pacotes-sec { background:var(--white); padding:80px 0; }
@@ -161,7 +202,7 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .pacote-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--marrom-lt); color:#fff; font-size:8px; letter-spacing:2.5px; text-transform:uppercase; font-weight:600; padding:6px 16px; border-radius:50px; white-space:nowrap; }
 .pacote-nivel { font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:500; }
 .pacote-card.destaque .pacote-nivel { color:rgba(245,239,230,0.5); }
-.pacote-nome { font-family:'Cormorant Garamond',serif; font-size:32px; font-style:italic; font-weight:300; color:var(--text); line-height:1; }
+.pacote-nome { font-family:'Cormorant Garamond',serif; font-size:38px; font-style:italic; font-weight:300; color:var(--text); line-height:1; }
 .pacote-card.destaque .pacote-nome { color:var(--creme); }
 .pacote-preco { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--marrom); line-height:1; }
 .pacote-card.destaque .pacote-preco { color:var(--creme); }
@@ -186,37 +227,79 @@ hr.div { border:none; border-top:1px solid var(--border); }
 .process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:52px; }
 .process-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:32px 24px 28px; text-align:center; }
 .process-num { font-family:'Cormorant Garamond',serif; font-size:52px; font-style:italic; font-weight:300; color:var(--marrom-lt); line-height:1; margin-bottom:12px; opacity:.5; }
-.process-name { font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:600; color:var(--marrom-dk); margin-bottom:12px; }
+.process-name { font-size:13px; letter-spacing:3px; text-transform:uppercase; font-weight:700; color:var(--marrom-dk); margin-bottom:12px; }
 .process-desc { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
 
 /* DIREITOS */
 .uso-sec { background:var(--marrom-bg); padding:64px 28px; text-align:center; }
 .uso-inner { max-width:720px; margin:0 auto; }
-.uso-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(28px,5vw,40px); color:var(--creme); font-weight:300; margin-bottom:16px; }
+.uso-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(34px,6vw,52px); color:var(--creme); font-weight:300; margin-bottom:16px; }
 .uso-body { font-size:14px; color:rgba(245,239,230,.7); line-height:1.9; font-weight:300; margin-bottom:10px; }
 .uso-pill { display:inline-block; margin-top:16px; background:rgba(245,239,230,0.12); border:1px solid rgba(245,239,230,0.25); color:rgba(245,239,230,0.85); border-radius:50px; padding:10px 24px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500; }
 
-/* FEEDBACKS */
+/* FEEDBACKS CARROSSEL */
 .fb-sec { max-width:980px; margin:0 auto; padding:80px 52px; }
-.fb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.fb-card { background:var(--creme); border:1px solid var(--border); border-radius:18px; padding:24px 20px 20px; display:flex; flex-direction:column; gap:12px; transition:transform .25s,box-shadow .25s; }
-.fb-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(123,74,45,.1); }
-.fb-stars { display:flex; gap:2px; }
-.star { color:var(--marrom); font-size:13px; }
-.fb-quote { font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--marrom-lt); line-height:.7; font-style:italic; opacity:.5; }
-.fb-text { font-size:13px; line-height:1.8; color:var(--muted); flex:1; font-weight:300; }
-.fb-author { font-size:9px; font-weight:600; color:var(--marrom); border-top:1px solid var(--border); padding-top:12px; text-transform:uppercase; letter-spacing:2px; }
+.fb-carousel-wrap { position:relative; overflow:hidden; }
+.fb-carousel { display:flex; width:100%; }
+.fb-card {
+  min-width:100%;
+  background:var(--creme);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:36px 40px 32px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  box-sizing:border-box;
+  /* estado inicial: fora à direita */
+  transform: translateX(120%);
+  opacity: 0;
+  position: absolute;
+  top: 0; left: 0;
+  transition: none;
+}
+.fb-card.slide-enter {
+  transform: translateX(120%);
+  opacity: 0;
+  transition: none;
+}
+.fb-card.slide-active {
+  transform: translateX(0%);
+  opacity: 1;
+  position: relative;
+  /* entra rápido */
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease;
+}
+.fb-card.slide-exit {
+  transform: translateX(-120%);
+  opacity: 0;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  /* sai rápido */
+  transition: transform 0.3s cubic-bezier(0.55,0,1,0.45), opacity 0.3s ease;
+}
+.fb-stars { display:flex; gap:3px; }
+.star { color:var(--marrom); font-size:15px; }
+.fb-quote { font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--marrom-lt); line-height:.7; font-style:italic; opacity:.4; }
+.fb-text { font-size:15px; line-height:1.85; color:var(--muted); font-weight:300; max-width:680px; }
+.fb-author { font-size:9px; font-weight:600; color:var(--marrom); border-top:1px solid var(--border); padding-top:14px; text-transform:uppercase; letter-spacing:2.5px; }
+/* dots */
+.fb-dots { display:flex; justify-content:center; gap:8px; margin-top:28px; }
+.fb-dot { width:7px; height:7px; border-radius:50%; background:var(--border); cursor:pointer; transition:background .3s, transform .3s; border:none; padding:0; }
+.fb-dot.active { background:var(--marrom); transform:scale(1.3); }
+@media(max-width:640px){ .fb-sec{ padding:64px 22px; } .fb-card{ padding:28px 24px 24px; } }
 
 /* EQUIPAMENTOS */
 .equip-sec { background:var(--creme); padding:72px 0; }
 .equip-inner { max-width:980px; margin:0 auto; padding:0 52px; }
 .equip-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--muted); text-align:center; margin-bottom:48px; font-weight:300; }
 .equip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.eq-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:28px 14px 20px; display:flex; flex-direction:column; align-items:center; gap:12px; position:relative; text-align:center; overflow:visible; transition:border-color .25s,box-shadow .25s,transform .25s; }
+.eq-card { background:var(--white); border:1px solid var(--border); border-radius:18px; padding:20px 14px 20px; display:flex; flex-direction:column; align-items:center; gap:14px; position:relative; text-align:center; overflow:visible; transition:border-color .25s,box-shadow .25s,transform .25s; }
 .eq-card:hover { border-color:rgba(123,74,45,.3); box-shadow:0 8px 28px rgba(123,74,45,.1); transform:translateY(-4px); }
-.eq-icon { width:88px; height:88px; background:var(--creme); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:transform .3s; }
-.eq-card:hover .eq-icon { transform:scale(1.06) translateY(-3px); }
-.eq-icon svg { width:38px; height:38px; stroke:var(--marrom); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.eq-photo { width:120px; height:120px; border-radius:18px; overflow:hidden; flex-shrink:0; transition:transform .3s; box-shadow:0 4px 16px rgba(0,0,0,.1); }
+.eq-card:hover .eq-photo { transform:scale(1.04) translateY(-3px); }
+.eq-photo img { width:100%; height:100%; object-fit:cover; }
 .eq-name { font-size:12px; font-weight:600; color:var(--text); line-height:1.3; }
 .eq-tip { position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px); background:var(--marrom-dk); color:rgba(255,255,255,.9); font-size:11px; line-height:1.6; padding:10px 14px; border-radius:10px; width:max-content; max-width:200px; pointer-events:none; opacity:0; transition:opacity .2s,transform .2s; z-index:20; font-weight:300; }
 .eq-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--marrom-dk); }
@@ -225,7 +308,7 @@ hr.div { border:none; border-top:1px solid var(--border); }
 /* CONTATO */
 .cta-sec { background:var(--marrom-dk); padding:80px 28px; }
 .cta-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:64px; align-items:center; }
-.cta-title { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,6vw,52px); font-style:italic; font-weight:300; line-height:1.1; color:var(--creme); margin-bottom:10px; }
+.cta-title { font-family:'Cormorant Garamond',serif; font-size:clamp(42px,7vw,62px); font-style:italic; font-weight:300; line-height:1.1; color:var(--creme); margin-bottom:10px; }
 .cta-sub { font-size:13px; color:rgba(245,239,230,.6); font-weight:300; line-height:1.7; }
 .contact-card { background:rgba(245,239,230,.1); border:1px solid rgba(245,239,230,.15); border-radius:22px; padding:30px 28px; display:flex; flex-direction:column; gap:14px; min-width:280px; }
 .c-item { display:flex; align-items:center; gap:10px; color:rgba(245,239,230,.88); font-size:13px; font-weight:300; transition:opacity .2s; }
@@ -337,6 +420,35 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
 <!-- MÉTRICAS ANIMADAS -->
 <div class="metrics-sec" id="metrics-section">
+
+  <!-- Header estilo Instagram -->
+  <div class="ig-header">
+    <div class="ig-badge">
+      <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig-grad-icon)"/>
+        <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8" fill="none"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+        <defs>
+          <linearGradient id="ig-grad-icon" x1="2" y1="22" x2="22" y2="2">
+            <stop offset="0%" stop-color="#FFDC80"/>
+            <stop offset="25%" stop-color="#FCAF45"/>
+            <stop offset="50%" stop-color="#F77737"/>
+            <stop offset="75%" stop-color="#C13584"/>
+            <stop offset="100%" stop-color="#833AB4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="ig-text-wrap">
+        <span class="ig-label">Instagram</span>
+        <span class="ig-sublabel">@anacarolinevalladares_</span>
+      </div>
+    </div>
+    <div class="ig-title-wrap">
+      <h2 class="ig-title">Minhas <span class="ig-title-grad">métricas</span></h2>
+      <p class="ig-period">Últimos 30 dias · Mai 2026</p>
+    </div>
+  </div>
+
   <div class="metrics-inner">
 
     <!-- Seguidores -->
@@ -428,8 +540,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
     <!-- BELEZA -->
     <div class="nicho-section visible" id="nicho-beleza">
-      <p class="nicho-title">Beleza</p>
-      <div class="sub-nichos">
+      <p class="nicho-title beleza">Beleza</p>
+      <div class="sub-nichos nicho-beleza">
         <div class="sub-btn active" onclick="showSub('beleza','b1',this)">Beleza 1</div>
         <div class="sub-btn" onclick="showSub('beleza','b2',this)">Beleza 2</div>
         <div class="sub-btn" onclick="showSub('beleza','b3',this)">Beleza 3</div>
@@ -563,8 +675,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
     <!-- MODA -->
     <div class="nicho-section" id="nicho-moda">
-      <p class="nicho-title">Moda feminina</p>
-      <div class="sub-nichos">
+      <p class="nicho-title moda">Moda feminina</p>
+      <div class="sub-nichos nicho-moda">
         <div class="sub-btn active" onclick="showSub('moda','m1',this)">Moda 1</div>
         <div class="sub-btn" onclick="showSub('moda','m2',this)">Moda 2</div>
         <div class="sub-btn" onclick="showSub('moda','m3',this)">Moda 3</div>
@@ -600,8 +712,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
     <!-- HOME E DECORAÇÃO -->
     <div class="nicho-section" id="nicho-home">
-      <p class="nicho-title">Home e Decoração</p>
-      <div class="sub-nichos">
+      <p class="nicho-title home">Home e Decoração</p>
+      <div class="sub-nichos nicho-home">
         <div class="sub-btn active" onclick="showSub('home','h1',this)">Todos os vídeos</div>
       </div>
       <div class="sub-section visible" id="home-h1">
@@ -616,8 +728,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
     <!-- FITNESS E BEM ESTAR -->
     <div class="nicho-section" id="nicho-fitness">
-      <p class="nicho-title">Fitness e Bem Estar</p>
-      <div class="sub-nichos">
+      <p class="nicho-title fitness">Fitness e Bem Estar</p>
+      <div class="sub-nichos nicho-fitness">
         <div class="sub-btn active" onclick="showSub('fitness','f1',this)">Todos os vídeos</div>
       </div>
       <div class="sub-section visible" id="fitness-f1">
@@ -632,8 +744,8 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 
     <!-- E-COMMERCE -->
     <div class="nicho-section" id="nicho-ecommerce">
-      <p class="nicho-title">E-commerce</p>
-      <div class="sub-nichos">
+      <p class="nicho-title ecommerce">E-commerce</p>
+      <div class="sub-nichos nicho-ecommerce">
         <div class="sub-btn active" onclick="showSub('ecommerce','e1',this)">Todos os vídeos</div>
       </div>
       <div class="sub-section visible" id="ecommerce-e1">
@@ -772,25 +884,34 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 <section id="feedbacks">
   <div class="fb-sec">
     <h2 class="sec-heading"><span>Feedbacks</span></h2>
-    <div class="fb-grid">
-      <div class="fb-card">
-        <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="fb-quote">"</p>
-        <p class="fb-text">Carol gostei muito, viu. Você me surpreendeu, superou minhas expectativas — muito bom. Com certeza faremos outras campanhas.</p>
-        <p class="fb-author">— Criatividade no Básico</p>
+
+    <div class="fb-carousel-wrap">
+      <div class="fb-carousel" id="fb-carousel">
+
+        <div class="fb-card">
+          <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="fb-quote">"</p>
+          <p class="fb-text">Carol gostei muito, viu. Você me surpreendeu, superou minhas expectativas — muito bom. Com certeza faremos outras campanhas.</p>
+          <p class="fb-author">— Criatividade no Básico</p>
+        </div>
+
+        <div class="fb-card">
+          <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="fb-quote">"</p>
+          <p class="fb-text">Oie Carol! O vídeo que você criou ficou ótimo e está aprovadíssimo! Vou pedir o pagamento e já vemos sobre a melhor data para publicação.</p>
+          <p class="fb-author">— Toda Joana</p>
+        </div>
+
+        <div class="fb-card">
+          <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="fb-quote">"</p>
+          <p class="fb-text">Super pontual, comunicativa e criativa. Entendeu o briefing à primeira leitura e ainda trouxe ideias que a gente não tinha pensado. Recomendo 100%.</p>
+          <p class="fb-author">— Cliente 03</p>
+        </div>
+
       </div>
-      <div class="fb-card">
-        <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="fb-quote">"</p>
-        <p class="fb-text">Oie Carol! O vídeo que você criou ficou ótimo e está aprovadíssimo! Vou pedir o pagamento e já vemos sobre a melhor data para publicação.</p>
-        <p class="fb-author">— Toda Joana</p>
-      </div>
-      <div class="fb-card">
-        <div class="fb-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="fb-quote">"</p>
-        <p class="fb-text">Super pontual, comunicativa e criativa. Entendeu o briefing à primeira leitura e ainda trouxe ideias que a gente não tinha pensado. Recomendo 100%.</p>
-        <p class="fb-author">— Cliente 03</p>
-      </div>
+      <!-- dots -->
+      <div class="fb-dots" id="fb-dots"></div>
     </div>
   </div>
 </section>
@@ -804,22 +925,22 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
     <p class="equip-sub">para garantir conteúdos com iluminação, imagem e vídeo de qualidade</p>
     <div class="equip-grid">
       <div class="eq-card">
-        <div class="eq-icon"><svg viewBox="0 0 24 24"><polygon points="3 2 21 2 17 13 7 13"/><line x1="10" y1="13" x2="9" y2="21"/><line x1="14" y1="13" x2="15" y2="21"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div>
+        <div class="eq-photo"><img src="https://drive.google.com/thumbnail?id=19Np-eFRCja1UeMHmPy-yVKmxpIeBjH-B&sz=w400" alt="Softbox"></div>
         <span class="eq-name">Softbox</span>
         <div class="eq-tip">Iluminação difusa profissional — luz suave e uniforme para rosto e close de produto</div>
       </div>
       <div class="eq-card">
-        <div class="eq-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="17.5" r="1"/><line x1="9" y1="6" x2="15" y2="6"/></svg></div>
+        <div class="eq-photo"><img src="https://drive.google.com/thumbnail?id=1L97ro6E46Zx33_2laW2n4sv1Ig7HpEWt&sz=w400" alt="iPhone Pro"></div>
         <span class="eq-name">iPhone Pro</span>
         <div class="eq-tip">Câmera cinematográfica de bolso — vídeo em alta resolução para UGC autêntico</div>
       </div>
       <div class="eq-card">
-        <div class="eq-icon"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div>
+        <div class="eq-photo"><img src="https://drive.google.com/thumbnail?id=1KwJrm49reD24bG2jz_BO243aSw1k2sgf&sz=w400" alt="Microfone lapela"></div>
         <span class="eq-name">Microfone lapela</span>
         <div class="eq-tip">Áudio limpo sem fio — captação profissional em qualquer ambiente</div>
       </div>
       <div class="eq-card">
-        <div class="eq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="10"/><circle cx="12" cy="10" r="2"/><line x1="12" y1="12" x2="5" y2="22"/><line x1="12" y1="12" x2="19" y2="22"/><line x1="7.5" y1="17" x2="16.5" y2="17"/></svg></div>
+        <div class="eq-photo"><img src="https://drive.google.com/thumbnail?id=1MJClWZJs-2jjLhDFiC3gIgjmo5trrzpB&sz=w400" alt="Tripé"></div>
         <span class="eq-name">Tripé</span>
         <div class="eq-tip">Gravações estáveis em qualquer ângulo — do plano vertical ao detalhe de produto</div>
       </div>
@@ -884,7 +1005,7 @@ footer { text-align:center; padding:28px 28px 90px; font-size:9px; letter-spacin
 function openDrive(id) {
   const modal = document.getElementById('video-modal');
   const iframe = document.getElementById('modal-iframe');
-  iframe.src = 'https://drive.google.com/file/d/' + id + '/preview';
+  iframe.src = 'https://drive.google.com/file/d/' + id + '/preview?rm=minimal&usp=sharing';
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -900,6 +1021,14 @@ function closeModal() {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 // Navegação de nichos
+const nichoColors = {
+  beleza:    { bg: '#6B3530', accent: '#D4A89A' },
+  moda:      { bg: '#6B4A20', accent: '#C4A882' },
+  home:      { bg: '#3A5030', accent: '#A8B89A' },
+  fitness:   { bg: '#2A5050', accent: '#A8C4C4' },
+  ecommerce: { bg: '#503050', accent: '#C4A8C4' },
+};
+
 function showNicho(id, btn) {
   document.querySelectorAll('.nicho-section').forEach(s => s.classList.remove('visible'));
   document.querySelectorAll('.nicho-btn').forEach(b => b.classList.remove('active'));
@@ -907,6 +1036,12 @@ function showNicho(id, btn) {
   btn.classList.add('active');
   const firstSub = document.querySelector('#nicho-' + id + ' .sub-btn');
   if (firstSub) firstSub.click();
+
+  // Mudar cor do fundo da barra de nichos
+  const colors = nichoColors[id];
+  if (colors) {
+    document.querySelector('.nichos-sec').style.background = colors.bg;
+  }
 }
 
 function showSub(nicho, sub, btn) {
@@ -962,7 +1097,93 @@ const metricsObs = new IntersectionObserver((entries) => {
 const metricsSection = document.getElementById('metrics-section');
 if (metricsSection) metricsObs.observe(metricsSection);
 
-// Nav highlight
+// Carrossel de feedbacks
+(function() {
+  const cards = Array.from(document.querySelectorAll('.fb-card'));
+  const dotsWrap = document.getElementById('fb-dots');
+  if (!cards.length) return;
+
+  let current = 0;
+  let isAnimating = false;
+  const PAUSE = 4200; // tempo parado (lento no meio)
+
+  // criar dots
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'fb-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => { if (!isAnimating && i !== current) goTo(i); };
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.querySelectorAll('.fb-dot'));
+
+  // inicializar: mostrar primeiro
+  cards[0].classList.add('slide-active');
+
+  function goTo(next) {
+    if (isAnimating || next === current) return;
+    isAnimating = true;
+
+    const prev = current;
+    current = next;
+
+    // atualizar dots
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+    // card atual: preparar saída
+    const exitCard = cards[prev];
+    const enterCard = cards[current];
+
+    // preparar entrada (fora à direita, sem transição)
+    enterCard.classList.remove('slide-exit', 'slide-active');
+    enterCard.classList.add('slide-enter');
+    enterCard.style.transition = 'none';
+
+    // forçar reflow
+    void enterCard.offsetWidth;
+
+    // saída do atual
+    exitCard.classList.remove('slide-active');
+    exitCard.classList.add('slide-exit');
+
+    // entrada do novo
+    enterCard.style.transition = '';
+    enterCard.classList.remove('slide-enter');
+    enterCard.classList.add('slide-active');
+
+    // limpar após animação
+    setTimeout(() => {
+      exitCard.classList.remove('slide-exit');
+      isAnimating = false;
+    }, 380);
+  }
+
+  // autoplay
+  let timer = setInterval(() => {
+    goTo((current + 1) % cards.length);
+  }, PAUSE);
+
+  // pausar no hover
+  const wrap = document.querySelector('.fb-carousel-wrap');
+  if (wrap) {
+    wrap.addEventListener('mouseenter', () => clearInterval(timer));
+    wrap.addEventListener('mouseleave', () => {
+      timer = setInterval(() => goTo((current + 1) % cards.length), PAUSE);
+    });
+  }
+})();
+const brandsObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll('.brand-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('colorido'), i * 180);
+      });
+      brandsObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+const brandsGrid = document.querySelector('.brands-grid');
+if (brandsGrid) brandsObs.observe(brandsGrid);
 const secs = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('#main-nav a');
 const obs = new IntersectionObserver(entries => {
